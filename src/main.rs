@@ -4,6 +4,9 @@ mod ring_buffer;
 
 pub use ring_buffer::{RingBuf, RingBuffer};
 
+// On the embedded system this would be placed in a linker section
+// that is not initialized at start.
+// #[link_section = ".uninit"]
 static mut BUFFER: MaybeUninit<RingBuffer<8192>> = MaybeUninit::uninit();
 
 fn main() {
